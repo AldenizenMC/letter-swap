@@ -1,2 +1,4 @@
-# cyrillicify
-Replaces letters with cyrillic letters that look identical
+# Unicodeify
+Replaces letters with non-latin characters that looks identical 
+
+[Website](https://aldenizenmc.github.io/unicodeify)
