@@ -264,7 +264,10 @@ div.input-copy {
     max-width: 100%;
 }
 
-div.input-copy button {
+div.input-copy button,
+div.input-copy button:hover,
+div.input-copy button:active,
+div.input-copy button:focus {
     max-height: 2rem;
     margin-left: 0;
     margin-right: auto;
