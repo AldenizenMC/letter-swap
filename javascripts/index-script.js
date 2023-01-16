@@ -101,9 +101,10 @@ function convert(inputValue = undefined) {
     inspectButton.href = `https://apps.timwhitlock.info/unicode/inspect?s=${encodeURI(
         value
     )}`;
-    urlInputText.value = `${window.location.origin}/?input=${encodeURI(
-        inputTextarea.value
-    )}`;
+    urlInputText.value = `${window.location.href.replace(
+        window.location.search,
+        ""
+    )}?input=${encodeURI(inputTextarea.value)}`;
 
     if (!outputContainer.classList.contains("is-active")) {
         outputContainer.classList.add("is-active");
