@@ -15,7 +15,6 @@ const urlInputText = document.getElementById("text-url");
 const urlCopyButton = document.getElementById("url-copy");
 
 const params = new URLSearchParams(window.location.search);
-console.log(window.location);
 let inputParam = params.get("input");
 
 if (inputParam) convert(inputParam);
@@ -101,10 +100,9 @@ function convert(inputValue = undefined) {
     inspectButton.href = `https://apps.timwhitlock.info/unicode/inspect?s=${encodeURI(
         value
     )}`;
-    urlInputText.value = `${window.location.href.replace(
-        window.location.search,
-        ""
-    )}?input=${encodeURI(inputTextarea.value)}`;
+    urlInputText.value = `${window.location}?input=${encodeURI(
+        inputTextarea.value
+    )}`;
 
     if (!outputContainer.classList.contains("is-active")) {
         outputContainer.classList.add("is-active");
