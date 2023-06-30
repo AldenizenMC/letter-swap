@@ -11,4 +11,5 @@
 - Modified footer
 - Updated the textarea behavior to enable horizontal scrolling when the text overflows, instead of wrapping the text
 - Adjusted the textarea placeholder's opacity to distinguish it from actual text content
-- Added noscript tag on pages that require JavaScript
+- Added noscript tag on pages that require JavaScript 
+- Implemented a GitHub action to automatically increment the version query parameter upon commit, effectively bypassing caching and ensuring the latest version is served
