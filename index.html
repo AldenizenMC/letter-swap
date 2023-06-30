@@ -21,6 +21,7 @@
     <script src="javascripts/theme.js?v=3" type="module"></script>
     <script src="javascripts/index-script.js?v=3" type="module"></script>
     <script src="https://kit.fontawesome.com/e524614bb5.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script>
     <!-- Embedding -->
     <meta content="Letter Swap" property="og:title">
     <meta content="Swaps normal letters for visually similar alternatives" property="og:description">
@@ -36,9 +37,9 @@
                 <h1>Letter Swap</h1>
                 <h3>Swaps normal letters for visually similar alternatives</h3>
                 <nav class="links">
-                    <a href="/letter-swap/">Converter</a>
-                    <a href="/letter-swap/letters.html">Letter List</a>
-                    <a href="/letter-swap/about.html">About</a>
+                    <a href="index.html">Converter</a>
+                    <a href="letters.html">Letter List</a>
+                    <a href="about.html">About</a>
                 </nav>
                 <div class="light-toggle">
                     <i id="theme-icon" class="fa-solid fa-sun fa-lg"></i>
@@ -50,6 +51,7 @@
             </div>
     </header>
     <main>
+        <noscript>You need to enable JavaScript for the converter to work</noscript>
         <div class="main-input" id="input-container">
             <textarea name="text-input" id="text-input" class="input" placeholder="Hello World!"></textarea>
             <button id="convert">Convert</button>
@@ -73,14 +75,17 @@
             <a class="button" id="inspect">Inspect</a>
             <div class="input-copy">
                 <input class="input-copy" type="text" id="text-url" readonly>
-                <button class="button-copy" id="url-copy" data-target="text-url">Copy</button>
+                <button class="button-copy" id="url-copy" data-clipboard-target="#text-url">Copy</button>
             </div>
         </div>
     </main>
     <footer>
         <div>
-            <hr>
-            <p><i class="fa-brands fa-github fa-lg"></i><a href="https://github.com/AldenizenMC/unicodeify/">Source</a>
+            <!-- <hr> -->
+            <p>
+                <a href="https://github.com/AldenizenMC/letter-swap/"><i
+                        class="fa-brands fa-github fa-lg"></i>Source</a><span>⎯</span><a
+                    href="https://github.com/AldenizenMC/letter-swap/blob/main/CHANGELOG.md">Changelog</a>
             </p>
         </div>
     </footer>

@@ -13,16 +13,24 @@
     --fg-color:             hsl(0, 0%, 0%); 
 }
 
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
 body {
     --background-color:         var(--bg-color);
     --background-color-input:   var(--bg-color-input);
     --foreground-color:         var(--fg-color);
     --primary-color:            var(--p-color);
 
+    display: flex;
+    flex-direction: column;
     color: var(--foreground-color);
     font-family: var(--font-family);
     background-color: var(--background-color);
-    transition: all ease-in-out 200ms;
+    /* transition: all ease-in-out 200ms; */
 }
 
 header {
@@ -31,9 +39,30 @@ header {
 }
 
 main {
+    flex-grow: 1;
+    min-width: 90%;
     margin-left: auto;
     margin-right: auto;
     text-align: center;
+}
+
+footer {
+    margin: auto auto 10px auto;
+    padding: 20px;
+    text-align: center;
+}
+
+footer a i {
+    color: #fff;
+    margin-right: 0.25rem;
+}
+
+footer p {
+    white-space: nowrap;
+}
+
+footer p > *:not(:first-child) {
+    margin-left: 0.5em;
 }
 
 h1 {
@@ -44,6 +73,11 @@ h1 {
 h3 {
     margin-top: 0.25rem;
     margin-bottom: 0.3rem;
+}
+
+/* Noscript tag */
+main > span:first-child + * {
+    margin-top: 1rem;
 }
 
 a,
@@ -61,10 +95,6 @@ hr {
     max-width: 20rem;
     margin-top: 1rem;
     margin-bottom: 1rem;
-}
-
-footer {
-    text-align: center;
 }
 
 div.header:last-child {
@@ -152,10 +182,12 @@ input:checked + .slider:before {
 textarea.input {
     --default-line: 5;
 
-    width: 50rem;
+    width: 90%;
+    max-width: 45rem;
     height: 60rem;
     resize: both;
     overflow: scroll;
+    overflow-x: auto;
     font-size: 1.25rem;
     border-width: 1px;
     margin-left: auto;
@@ -164,8 +196,9 @@ textarea.input {
     color: var(--foreground-color);
     font-family: var(--font-family);
     border-color: hsl(0, 0%, 50%);
-    height: calc(var(--default-line) * 1.9rem);
+    height: calc(var(--default-line) * 1.35em);
     background-color: var(--background-color-input);
+    white-space: pre; /* Added property to preserve whitespace, but not wrap */
 }
 
 /* @media only screen and (max-width: 880px) {
@@ -176,6 +209,7 @@ textarea.input {
 
 textarea.input::placeholder {
     color: var(--foreground-color);
+    opacity: 30%;
 }
 
 button {
@@ -212,10 +246,11 @@ div.main-input {
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
+    padding: 0;
+    margin: 0 auto;
     max-width: 90%;
-    padding-left: 5%;
-    padding-right: 5%;
     overflow: hidden;
+    align-items: center;
 }
 
 div.main-output {
@@ -226,10 +261,15 @@ div.main-output.is-active{
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
-    margin-top: 2rem;
+    margin-top: 3rem;
     max-width: 90%;
     padding-left: 5%;
     padding-right: 5%;
+    align-items: center;
+}
+
+div.main-output.is-active h3 {
+    margin: 0 0 1rem 0
 }
 
 table {
@@ -276,8 +316,9 @@ input[type="text"].input-copy {
     margin-right: 1rem;
     font-size: 1rem;
     border: 0;
+    width: fit-content;
+    height: 1.25rem;
     max-width: 22.5rem;
-    max-height: 1.1rem;
     color: var(--foreground-color);
     background-color: var(--background-color-input);
     font-family: var(--font-family);
@@ -334,6 +375,32 @@ div.toast.show {
     }
 }
 
-footer > div > p > a {
-    margin-left: 0.5rem;
+.notification {
+    --height: 3rem;
+    display: inline-flex;
+    height: var(--height);
+    width: max-content;
+    max-width: 16rem;
+    padding: 0 0.75rem;
+    background-color: #f82a2a;
+    text-align: center;
+    vertical-align: middle;
+    line-height: var(--height);
+    margin-bottom: 1rem;
+    border-radius: 10px;
+}
+
+.notification p {
+    display: inline-block;
+}
+
+.notification .icon-container {
+    display: inline-flex;
+  align-items: center;
+}
+
+.notification p {
+    margin-top: 0;
+    margin-bottom: 0;
+    flex-shrink: 0;
 }

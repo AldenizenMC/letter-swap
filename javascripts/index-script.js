@@ -20,16 +20,23 @@ if (inputParam) convert(inputParam);
 
 document.addEventListener("DOMContentLoaded", () => {
     convertButton.addEventListener("click", () => convert());
-    urlCopyButton.addEventListener("click", () => {
-        const target = urlCopyButton.dataset.target;
-        const input = document.getElementById(target);
-        if (!input) return alert("Unable to find target dataset");
-        copyToClipboard(input);
+    var clipboard = new ClipboardJS("#url-copy");
+
+    clipboard.on("success", (e) => {
         let name = urlCopyButton.innerText;
-        urlCopyButton.innerText = "Copied!";
+        urlCopyButton.innerText = "Copied";
         setTimeout(() => {
             urlCopyButton.innerText = name;
-        }, 2500);
+        }, 1500);
+        e.clearSelection();
+    });
+
+    clipboard.on("error", (e) => {
+        alert(
+            "There was an error trying to copy to clipboard. Please check console for more info"
+        );
+        console.error("Action:", e.action);
+        console.error("Trigger:", e.trigger);
     });
 });
 
@@ -50,11 +57,7 @@ function copyToClipboard(input) {
 function convert(inputValue = undefined) {
     let value = "";
 
-    const notifications = document.querySelectorAll(".notification");
-
-    if (notifications) {
-        notifications.forEach((el) => el.remove());
-    }
+    clearNotifications();
 
     if (inputValue) {
         inputTextarea.value = inputValue;
@@ -62,20 +65,7 @@ function convert(inputValue = undefined) {
     } else if (inputTextarea.value.length) {
         value = inputTextarea.value;
     } else {
-        const icon = document.createElement("i");
-        icon.setAttribute("class", "fa-solid fa-circle-xmark fa-lg");
-        icon.style.setProperty("margin-right", "0.35rem");
-
-        const notification = document.createElement("div");
-        notification.setAttribute("class", "notification is-danger");
-        notification.appendChild(icon);
-        notification.appendChild(
-            document.createTextNode("Input cannot be empty")
-        );
-        inputContainer.insertBefore(notification, inputTextarea);
-        if (outputContainer.classList.contains("is-active")) {
-            outputContainer.classList.remove("is-active");
-        }
+        showInputNotification("Input cannot be empty");
         return;
     }
 
@@ -110,18 +100,57 @@ function convert(inputValue = undefined) {
     console.log(i);
 
     if (i === 0) {
-        const icon = document.createElement("i");
-        icon.setAttribute("class", "fa-solid fa-circle-xmark fa-lg");
-        icon.style.setProperty("margin-right", "0.35rem");
-
-        const notification = document.createElement("div");
-        notification.setAttribute("class", "notification is-danger");
-        notification.appendChild(icon);
-        notification.appendChild(
-            document.createTextNode("No letters were replaced")
-        );
-        outputContainer.insertBefore(notification, outputTextarea);
+        showOutputNotification("No letter were replaced");
     }
+}
+
+function clearNotifications() {
+    const notifications = document.querySelectorAll(".notification");
+
+    if (notifications) {
+        notifications.forEach((el) => el.remove());
+    }
+}
+
+function showInputNotification(message) {
+    const icon = document.createElement("i");
+    icon.setAttribute("class", "fa-solid fa-circle-xmark fa-lg");
+    icon.style.setProperty("margin-right", "0.35rem");
+
+    const icon_container = document.createElement("span");
+    icon_container.setAttribute("class", "icon-container");
+    icon_container.appendChild(icon);
+
+    const text = document.createElement("p");
+    text.appendChild(document.createTextNode(message));
+
+    const notification = document.createElement("div");
+    notification.setAttribute("class", "notification is-danger");
+    notification.appendChild(icon_container);
+    notification.appendChild(text);
+    inputContainer.insertBefore(notification, inputTextarea);
+    if (outputContainer.classList.contains("is-active")) {
+        outputContainer.classList.remove("is-active");
+    }
+}
+
+function showOutputNotification(message) {
+    const icon = document.createElement("i");
+    icon.setAttribute("class", "fa-solid fa-circle-xmark fa-lg");
+    icon.style.setProperty("margin-right", "0.35rem");
+
+    const icon_container = document.createElement("span");
+    icon_container.setAttribute("class", "icon-container");
+    icon_container.appendChild(icon);
+
+    const text = document.createElement("p");
+    text.appendChild(document.createTextNode(message));
+
+    const notification = document.createElement("div");
+    notification.setAttribute("class", "notification is-danger");
+    notification.appendChild(icon_container);
+    notification.appendChild(text);
+    outputContainer.insertBefore(notification, outputTextarea);
 }
 
 /**
