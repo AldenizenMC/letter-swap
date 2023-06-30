@@ -224,3 +224,5 @@ export function ShowToast(message, duration, prefixElement) {
         }, 100);
     }, duration ?? 3000);
 }
+
+// test
