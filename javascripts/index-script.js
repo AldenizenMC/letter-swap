@@ -1,4 +1,3 @@
-import "./light-mode.js";
 import { Letters as letters } from "./letters.js";
 
 const Letters = letters.filter((l) => l.modified.length !== 0);

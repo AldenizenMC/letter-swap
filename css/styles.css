@@ -4,14 +4,13 @@
     --fg-color:             hsl(0, 0%, 100%); 
     --p-color:              hsl(212, 55%, 50%);
 
-    
-    --l-bg-color:           hsl(240, 15%, 100%);
-    --l-bg-color-input:     hsl(240, 15%, 90%);
-    --l-fg-color:           hsl(0, 0%, 0%);
-    --l-p-color:            hsl(212, 36%, 53%);
-    
-   
     --font-family: BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+}
+
+.light-mode {
+    --bg-color:             hsl(0, 0%, 100%);
+    --bg-color-input:       hsl(0, 0%, 90%);
+    --fg-color:             hsl(0, 0%, 0%); 
 }
 
 body {
@@ -59,16 +58,16 @@ a:focus {
 }
 
 hr {
-    max-width: 20%;
+    max-width: 20rem;
     margin-top: 1rem;
     margin-bottom: 1rem;
 }
 
-div.container {
+footer {
     text-align: center;
 }
 
-div.container.header:last-child {
+div.header:last-child {
     margin-bottom: 1rem;
 }
 
@@ -90,7 +89,6 @@ div.light-toggle > i {
     left: -45%;
 }
 
-/* The switch - the box around the slider */
 .switch {
     position: relative;
     display: inline-block;
@@ -98,14 +96,12 @@ div.light-toggle > i {
     height: 34px;
 }
 
-/* Hide default HTML checkbox */
 .switch input {
     opacity: 0;
     width: 0;
     height: 0;
 }
 
-/* The slider */
 .slider {
     position: absolute;
     cursor: pointer;
@@ -156,9 +152,9 @@ input:checked + .slider:before {
 textarea.input {
     --default-line: 5;
 
-    /* max-width: 100%; */
-    max-width: 90%;
-    resize: none;
+    width: 50rem;
+    height: 60rem;
+    resize: both;
     overflow: scroll;
     font-size: 1.25rem;
     border-width: 1px;
@@ -182,17 +178,34 @@ textarea.input::placeholder {
     color: var(--foreground-color);
 }
 
-button.button,
-button.button:hover
-button.button:active,
-button.button:focus  {
+button {
+    height: 3rem;
+    width: 7rem;
     border: 0;
     color: #ffffff;
     background-color: var(--primary-color);
     font-family: var(--font-family);
-    border-width: 1px;
+    font-size: 1.05rem;
     margin-left: auto;
     margin-right: auto;
+    border-radius: 5px;
+}
+
+a.button {
+    display: inline-block;
+    padding: 5px 15px;
+    border: 0;
+    color: #ffffff;
+    background-color: var(--primary-color);
+    font-family: var(--font-family);
+    font-size: 1.05rem;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 5px;
+}
+
+a#inspect {
+    margin-top: 1rem
 }
 
 div.main-input {
@@ -219,19 +232,22 @@ div.main-output.is-active{
     padding-right: 5%;
 }
 
-table.table {
+table {
     margin-left: auto;
     margin-right: auto;
 }
 
-table.table,
-table.table thead,
-table.table td,
-table.table th {
-    border-width: 1px;
+table,
+table thead,
+table td,
+table th {
+    border: 1px solid;
+    border-collapse: collapse;
+    padding: 10px;
     color: var(--foreground-color);
     border-color: var(--foreground-color);
     background-color: var(--background-color);
+    text-align: center;
 }
 
 a.button,
@@ -246,31 +262,32 @@ a.button:any-link {
     font-family: var(--font-family);
 }
 
-input[type="text"].input {
+button.button-copy {
+    width: 4rem;
+    height:2rem;
+    margin-left: 0;
+    margin-right: auto;
+}
+
+input[type="text"].input-copy {
+    margin-top: auto;
+    margin-bottom: auto;
     margin-left: auto;
     margin-right: 1rem;
     font-size: 1rem;
+    border: 0;
     max-width: 22.5rem;
-    max-height: 1rem;
+    max-height: 1.1rem;
     color: var(--foreground-color);
-    border-color: var(--foreground-color);
     background-color: var(--background-color-input);
     font-family: var(--font-family);
 }
+ 
 
 div.input-copy {
     display: flex;
     margin: 1rem 0;
     max-width: 100%;
-}
-
-div.input-copy button,
-div.input-copy button:hover,
-div.input-copy button:active,
-div.input-copy button:focus {
-    max-height: 2rem;
-    margin-left: 0;
-    margin-right: auto;
 }
 
 div.toast {
