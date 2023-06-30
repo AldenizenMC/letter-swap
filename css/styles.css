@@ -46,6 +46,11 @@ h3 {
     margin-bottom: 0.3rem;
 }
 
+/* Noscript tag */
+main > span:first-child + * {
+    margin-top: 1rem;
+}
+
 a,
 a:any-link {
     text-decoration: none;
@@ -152,7 +157,7 @@ input:checked + .slider:before {
 textarea.input {
     --default-line: 5;
 
-    width: 50rem;
+    min-width: 60%;
     height: 60rem;
     resize: both;
     overflow: scroll;
@@ -216,6 +221,7 @@ div.main-input {
     padding-left: 5%;
     padding-right: 5%;
     overflow: hidden;
+    align-items: center;
 }
 
 div.main-output {
@@ -226,10 +232,15 @@ div.main-output.is-active{
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
-    margin-top: 2rem;
+    margin-top: 3rem;
     max-width: 90%;
     padding-left: 5%;
     padding-right: 5%;
+    align-items: center;
+}
+
+div.main-output.is-active h3 {
+    margin: 0 0 1rem 0
 }
 
 table {
@@ -276,8 +287,9 @@ input[type="text"].input-copy {
     margin-right: 1rem;
     font-size: 1rem;
     border: 0;
+    width: fit-content;
+    height: 1.25rem;
     max-width: 22.5rem;
-    max-height: 1.1rem;
     color: var(--foreground-color);
     background-color: var(--background-color-input);
     font-family: var(--font-family);
@@ -336,4 +348,34 @@ div.toast.show {
 
 footer > div > p > a {
     margin-left: 0.5rem;
+}
+
+.notification {
+    --height: 3rem;
+    display: inline-flex;
+    height: var(--height);
+    width: max-content;
+    max-width: 16rem;
+    padding: 0 0.75rem;
+    background-color: #f82a2a;
+    text-align: center;
+    vertical-align: middle;
+    line-height: var(--height);
+    margin-bottom: 1rem;
+    border-radius: 10px;
+}
+
+.notification p {
+    display: inline-block;
+}
+
+.notification .icon-container {
+    display: inline-flex;
+  align-items: center;
+}
+
+.notification p {
+    margin-top: 0;
+    margin-bottom: 0;
+    flex-shrink: 0;
 }
