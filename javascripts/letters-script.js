@@ -1,4 +1,3 @@
-import "./light-mode.js";
 import { Letters } from "./letters.js";
 
 const table = document.getElementById("letter-list-table");

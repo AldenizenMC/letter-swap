@@ -19,11 +19,12 @@
     <meta name="msapplication-TileColor" content="#3254a8">
     <meta name="theme-color" content="#ffffff">
     <!-- JavaScripts -->
+    <script src="javascripts/theme.js" type="module"></script>
     <script src="javascripts/letters-script.js" type="module"></script>
     <script src="https://kit.fontawesome.com/e524614bb5.js" crossorigin="anonymous"></script>
     <!-- Embedding -->
-    <meta content="Unicodeify" property="og:title">
-    <meta content="Replaces latin characters with non-latin characters that looks identical" property="og:description">
+    <meta content="Letter Swap" property="og:title">
+    <meta content="Swaps normal letters for visually similar alternatives" property="og:description">
     <meta content="https://aldenizenmc.github.io/unicodeify">
     <meta content="https://aldenizenmc.github.io/unicodeify/images/embed.png" property="og:image">
     <meta content="#3254a8" data-react-helmet="true" name="theme-color">
@@ -31,14 +32,14 @@
 
 <body data-page="letters">
     <header>
-        <div class="container header">
+        <div class="header">
             <div class="headings">
-                <h1>Unicodeify</h1>
-                <h3>Replaces latin characters with non-latin characters that looks identical</h3>
+                <h1>Letter Swap</h1>
+                <h3>Swaps normal letters for visually similar alternatives</h3>
                 <nav class="links">
-                    <a href="/unicodeify/">Converter</a>
-                    <a href="/unicodeify/letters.html">Letters</a>
-                    <a href="/unicodeify/about.html">About</a>
+                    <a href="/">Converter</a>
+                    <a href="/letters.html">Letter List</a>
+                    <a href="/about.html">About</a>
                 </nav>
                 <div class="light-toggle">
                     <i id="theme-icon" class="fa-solid fa-sun fa-lg"></i>
@@ -50,13 +51,13 @@
             </div>
     </header>
     <main>
-        <table class="table is-bordered" id="">
+        <table>
             <thead>
                 <tr>
-                    <th><abbr title="Number">N</abbr></th>
-                    <th><abbr title="Original">Original</abbr></th>
-                    <th><abbr title="Replacement">Replace...</abbr></th>
-                    <th><abbr title="Block">Block</abbr></th>
+                    <th>N</th>
+                    <th>Original</th>
+                    <th>Replacement</th>
+                    <th>Block</th>
                 </tr>
             </thead>
             <tbody id="letter-list-table">
@@ -65,9 +66,9 @@
         </table>
     </main>
     <footer>
-        <div class="container">
+        <div>
             <hr>
-            <p><i class="fa-brands fa-github fa-lg"></i><a href="https://github.com/AldenizenMC/unicodeify">Source</a>
+            <p><i class="fa-brands fa-github fa-lg"></i><a href="https://github.com/AldenizenMC/unicodeify/">Source</a>
             </p>
         </div>
     </footer>

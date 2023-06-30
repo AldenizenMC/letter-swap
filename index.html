@@ -19,11 +19,12 @@
     <meta name="msapplication-TileColor" content="#3254a8">
     <meta name="theme-color" content="#ffffff">
     <!-- JavaScripts -->
+    <script src="javascripts/theme.js" type="module"></script>
     <script src="javascripts/index-script.js" type="module"></script>
     <script src="https://kit.fontawesome.com/e524614bb5.js" crossorigin="anonymous"></script>
     <!-- Embedding -->
-    <meta content="Unicodeify" property="og:title">
-    <meta content="Replaces latin characters with non-latin characters that looks identical" property="og:description">
+    <meta content="Letter Swap" property="og:title">
+    <meta content="Swaps normal letters for visually similar alternatives" property="og:description">
     <meta content="https://aldenizenmc.github.io/unicodeify">
     <meta content="https://aldenizenmc.github.io/unicodeify/images/embed.png" property="og:image">
     <meta content="#3254a8" data-react-helmet="true" name="theme-color">
@@ -31,14 +32,14 @@
 
 <body data-page="index">
     <header>
-        <div class="container header">
+        <div class="header">
             <div class="headings">
-                <h1>Unicodeify</h1>
-                <h3>Replaces latin characters with non-latin characters that looks identical</h3>
+                <h1>Letter Swap</h1>
+                <h3>Swaps normal letters for visually similar alternatives</h3>
                 <nav class="links">
-                    <a href="/unicodeify/">Converter</a>
-                    <a href="/unicodeify/letters.html">Letters</a>
-                    <a href="/unicodeify/about.html">About</a>
+                    <a href="/">Converter</a>
+                    <a href="/letters.html">Letter List</a>
+                    <a href="/about.html">About</a>
                 </nav>
                 <div class="light-toggle">
                     <i id="theme-icon" class="fa-solid fa-sun fa-lg"></i>
@@ -50,14 +51,14 @@
             </div>
     </header>
     <main>
-        <div class="container main-input" id="input-container">
+        <div class="main-input" id="input-container">
             <textarea name="text-input" id="text-input" class="input" placeholder="Hello World!"></textarea>
-            <button class="button" id="convert">Convert</button>
+            <button id="convert">Convert</button>
         </div>
-        <div class="container main-output" id="output-container">
+        <div class="main-output" id="output-container">
             <h3>Output</h3>
             <textarea name="text-output" id="text-output" class="input" placeholder="Неllо World!" readonly></textarea>
-            <table class="table is-bordered" id="">
+            <table>
                 <thead>
                     <tr>
                         <th><abbr title="N"></abbr>N</th>
@@ -70,15 +71,15 @@
                 </tbody>
                 <tfoot></tfoot>
             </table>
-            <a href="" class="button" id="inspect">Inspect</a>
+            <a class="button" id="inspect">Inspect</a>
             <div class="input-copy">
-                <input type="text" id="text-url" class="input" readonly>
-                <button class="button button-copy" id="url-copy" data-target="text-url">Copy</button>
+                <input class="input-copy" type="text" id="text-url" readonly>
+                <button class="button-copy" id="url-copy" data-target="text-url">Copy</button>
             </div>
         </div>
     </main>
     <footer>
-        <div class="container">
+        <div>
             <hr>
             <p><i class="fa-brands fa-github fa-lg"></i><a href="https://github.com/AldenizenMC/unicodeify/">Source</a>
             </p>
