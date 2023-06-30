@@ -13,12 +13,20 @@
     --fg-color:             hsl(0, 0%, 0%); 
 }
 
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
 body {
     --background-color:         var(--bg-color);
     --background-color-input:   var(--bg-color-input);
     --foreground-color:         var(--fg-color);
     --primary-color:            var(--p-color);
 
+    display: flex;
+    flex-direction: column;
     color: var(--foreground-color);
     font-family: var(--font-family);
     background-color: var(--background-color);
@@ -31,9 +39,30 @@ header {
 }
 
 main {
+    flex-grow: 1;
+    min-width: 90%;
     margin-left: auto;
     margin-right: auto;
     text-align: center;
+}
+
+footer {
+    margin: auto auto 10px auto;
+    padding: 20px;
+    text-align: center;
+}
+
+footer a i {
+    color: #fff;
+    margin-right: 0.25rem;
+}
+
+footer p {
+    white-space: nowrap;
+}
+
+footer p > *:not(:first-child) {
+    margin-left: 0.5em;
 }
 
 h1 {
@@ -66,10 +95,6 @@ hr {
     max-width: 20rem;
     margin-top: 1rem;
     margin-bottom: 1rem;
-}
-
-footer {
-    text-align: center;
 }
 
 div.header:last-child {
@@ -157,10 +182,12 @@ input:checked + .slider:before {
 textarea.input {
     --default-line: 5;
 
-    min-width: 60%;
+    width: 90%;
+    max-width: 45rem;
     height: 60rem;
     resize: both;
     overflow: scroll;
+    overflow-x: auto;
     font-size: 1.25rem;
     border-width: 1px;
     margin-left: auto;
@@ -169,8 +196,9 @@ textarea.input {
     color: var(--foreground-color);
     font-family: var(--font-family);
     border-color: hsl(0, 0%, 50%);
-    height: calc(var(--default-line) * 1.9rem);
+    height: calc(var(--default-line) * 1.35em);
     background-color: var(--background-color-input);
+    white-space: pre; /* Added property to preserve whitespace, but not wrap */
 }
 
 /* @media only screen and (max-width: 880px) {
@@ -181,6 +209,7 @@ textarea.input {
 
 textarea.input::placeholder {
     color: var(--foreground-color);
+    opacity: 30%;
 }
 
 button {
@@ -217,9 +246,9 @@ div.main-input {
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
+    padding: 0;
+    margin: 0 auto;
     max-width: 90%;
-    padding-left: 5%;
-    padding-right: 5%;
     overflow: hidden;
     align-items: center;
 }
@@ -344,10 +373,6 @@ div.toast.show {
         bottom: 0; 
         opacity: 0;
     }
-}
-
-footer > div > p > a {
-    margin-left: 0.5rem;
 }
 
 .notification {
