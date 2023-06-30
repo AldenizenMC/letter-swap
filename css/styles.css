@@ -22,7 +22,7 @@ body {
     color: var(--foreground-color);
     font-family: var(--font-family);
     background-color: var(--background-color);
-    transition: all ease-in-out 200ms;
+    /* transition: all ease-in-out 200ms; */
 }
 
 header {
