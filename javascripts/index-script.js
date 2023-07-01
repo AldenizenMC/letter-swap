@@ -19,14 +19,14 @@ let inputParam = params.get("input");
 if (inputParam) convert(inputParam);
 
 document.addEventListener("DOMContentLoaded", () => {
+    urlCopyButton.innerText = urlCopyButton.dataset["unclicked"];
     convertButton.addEventListener("click", () => convert());
     var clipboard = new ClipboardJS("#url-copy");
 
     clipboard.on("success", (e) => {
-        let name = urlCopyButton.innerText;
-        urlCopyButton.innerText = "Copied";
+        urlCopyButton.innerText = urlCopyButton.dataset["clicked"];
         setTimeout(() => {
-            urlCopyButton.innerText = name;
+            urlCopyButton.innerText = urlCopyButton.dataset["unclicked"];
         }, 1500);
         e.clearSelection();
     });
@@ -96,8 +96,6 @@ function convert(inputValue = undefined) {
     if (!outputContainer.classList.contains("is-active")) {
         outputContainer.classList.add("is-active");
     }
-
-    console.log(i);
 
     if (i === 0) {
         showOutputNotification("No letter were replaced");

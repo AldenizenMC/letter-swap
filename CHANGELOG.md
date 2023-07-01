@@ -1,5 +1,9 @@
 # Changelog
 
+## 01-07-3034
+
+- Fixed copy URL button label not returning to "Copy" after being clicked during "Copied" state. 
+
 ## 30-06-2023
 
 - Renamed from "Unicodeify" to "Letter Swap"
