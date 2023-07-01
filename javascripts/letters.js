@@ -66,6 +66,9 @@ const Letters = [
     { original: "7", modified: "", block: "" },
     { original: "8", modified: "", block: "" },
     { original: "9", modified: "", block: "" },
+
+    // symbols
+    { original: "/", modified: "∕", block: "Mathematical Operators" },
 ];
 
 export { Letters };
