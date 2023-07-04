@@ -38,7 +38,7 @@
                 <h3>Replaces regular letters with visually similar alternatives</h3>
                 <nav class="links">
                     <a href="index.html">Converter</a>
-                    <a href="letters.html">Letter List</a>
+                    <a href="characters.html">Character List</a>
                     <a href="about.html">About</a>
                 </nav>
                 <div class="light-toggle">
@@ -54,6 +54,27 @@
         <noscript>You need to enable JavaScript for the converter to work</noscript>
         <div class="main-input" id="input-container">
             <textarea name="text-input" id="text-input" class="input" placeholder="Hello World!"></textarea>
+            <div class="converter-setting-container">
+                <div>
+                    <input type="checkbox" name="" id="converter-setting-lowercase" data-target="converter-lowercase">
+                    <label for="converter-setting-lowercase">Lowercase Letters</label>
+                </div>
+
+                <div>
+                    <input type="checkbox" name="" id="converter-setting-uppercase" data-target="converter-uppercase">
+                    <label for="converter-setting-uppercase">Uppercase Letters</label>
+                </div>
+
+                <div>
+                    <input type="checkbox" name="" id="converter-setting-number" data-target="converter-number">
+                    <label for="converter-setting-number">Numbers</label>
+                </div>
+
+                <div>
+                    <input type="checkbox" name="" id="converter-setting-symbol" data-target="converter-symbol">
+                    <label for="converter-setting-symbol">Symbols</label>
+                </div>
+            </div>
             <button id="convert">Convert</button>
         </div>
         <div class="main-output" id="output-container">
@@ -62,10 +83,10 @@
             <table>
                 <thead>
                     <tr>
-                        <th><abbr title="N"></abbr>N</th>
-                        <th><abbr title="Original"></abbr>Original</th>
-                        <th><abbr title="Replaced"></abbr>Replaced</th>
-                        <th><abbr title="Block"></abbr>Block</th>
+                        <th>#</th>
+                        <th>Original</th>
+                        <th>Replaced</th>
+                        <th>Block</th>
                     </tr>
                 </thead>
                 <tbody id="replaced-letter-table">

@@ -124,6 +124,7 @@ div.light-toggle > i {
     display: inline-block;
     width: 60px;
     height: 34px;
+    cursor: pointer;
 }
 
 .switch input {
@@ -134,6 +135,7 @@ div.light-toggle > i {
 
 .slider {
     position: absolute;
+    width: 100%;
     cursor: pointer;
     top: 0;
     left: 0;
@@ -144,7 +146,7 @@ div.light-toggle > i {
     transition: .4s;
 }
 
-.slider:before {
+.slider::before {
     position: absolute;
     content: "";
     height: 26px;
@@ -164,10 +166,10 @@ input:focus + .slider {
     box-shadow: 0 0 1px var(--primary-color);
 }
 
-input:checked + .slider:before {
-    -webkit-transform: translateX(26px);
-    -ms-transform: translateX(26px);
-    transform: translateX(26px);
+input:checked + .slider::before {
+    -webkit-transform:  translateX(100%);
+    -ms-transform:      translateX(100%);
+    transform:          translateX(100%);
 }
 
 /* Rounded sliders */
@@ -273,8 +275,16 @@ div.main-output.is-active h3 {
 }
 
 table {
+    min-width: 30%;
+    max-width: 30rem;
     margin-left: auto;
     margin-right: auto;
+}
+
+@media screen and (max-width: 600px) {
+    table {
+        width: 100%;
+    }
 }
 
 table,
@@ -288,6 +298,16 @@ table th {
     border-color: var(--foreground-color);
     background-color: var(--background-color);
     text-align: center;
+}
+
+/* 2nd child because 1st is <noscript> */
+main > div:has(table):not(:nth-child(2)) {
+    margin-top: 2rem;
+}
+
+.letter-table-title {
+    text-transform: capitalize;
+    margin-bottom: 0.5rem;
 }
 
 a.button,
@@ -403,4 +423,71 @@ div.toast.show {
     margin-top: 0;
     margin-bottom: 0;
     flex-shrink: 0;
+}
+
+.converter-setting-container {
+    margin-bottom: 1rem;
+    display: inline-flex;
+}
+
+.converter-setting-container div {
+    display: flex;
+    vertical-align: middle;
+    margin: 0 0.35em;
+}
+
+
+.converter-setting-container input[type="checkbox"]  {
+    position: relative;
+    padding-left: 1.25em;
+    display: inline-block;
+    appearance: none;
+    cursor: pointer;
+    color: #fff;
+    line-height: 25px;
+    /* background-color: #d5d5d5;
+    accent-color: #f82a2a;
+    cursor: pointer; */
+}
+
+.converter-setting-container input[type="checkbox"]::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 1em;
+    width:  1em;
+    outline: 2px solid var(--p-color);
+    background-color: var(--bg-color-input);
+}
+
+.converter-setting-container input[type="checkbox"]:checked::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 1em;
+    width:  1em;
+    outline: 2px solid var(--p-color);
+    background-color: #fff;
+}
+
+.converter-setting-container input[type="checkbox"]:checked::after {
+    position: absolute;
+    content: "";
+    left: 20%;
+    top: 27%;
+    height: 1em;
+    width:  1em;
+    width: 5px;
+    height: 10px;
+    border-color: var(--p-color);
+    border-style: solid;
+    border-width: 0 3px 3px 0;
+    transform: translateY(-50%) rotate(45deg);
+}
+
+.converter-setting-container label {
+  user-select: none;
+  cursor: pointer;
 }
