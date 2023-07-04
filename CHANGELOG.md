@@ -1,6 +1,6 @@
 # Changelog
 
-## 2023-07-01
+## 2023-07-04
 
 ### Added
 - Added replacement letter for `/`, `Z`, `!`, `.`, `,`, `;`, ` `, and `"` [(see updated list here)](javascripts/letters.js)
