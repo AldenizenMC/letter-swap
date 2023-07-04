@@ -1,4 +1,4 @@
-# [Letter Swap](https://aldenizenmc.github.io/letter-swap)
+# [Unicode Spoofer](https://aldenizenmc.github.io/unicode-spoofer)
 Swaps normal letters for visually similar alternatives
 
 ## Replaceable characters

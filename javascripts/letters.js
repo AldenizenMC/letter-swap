@@ -25,7 +25,7 @@ const Letters = [
     { original: "W", modified: "", block: "" },
     { original: "X", modified: "Х", block: "Cyrillic" },
     { original: "Y", modified: "Ү", block: "Cyrillic" },
-    { original: "Z", modified: "", block: "" },
+    { original: "Z", modified: "Ζ", block: "Greek and Coptic" },
 
     // lowercase letters
     { original: "a", modified: "а", block: "Cyrillic" },
@@ -69,6 +69,12 @@ const Letters = [
 
     // symbols
     { original: "/", modified: "∕", block: "Mathematical Operators" },
+    { original: "!", modified: "ǃ", block: "Latin Extended-B" },
+    { original: ".", modified: "․", block: "General Punctuation" },
+    { original: ",", modified: "‚", block: "General Punctuation" },
+    { original: ";", modified: ";", block: "General Punctuation" },
+    { original: " ", modified: " ", block: "General Punctuation" },
+    { original: '"', modified: "", block: "" },
 ];
 
 export { Letters };

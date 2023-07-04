@@ -1,6 +1,6 @@
 {
-    "name": "Letter Swap",
-    "short_name": "Letter Swap",
+    "name": "Unicode Spoofer",
+    "short_name": "Unicode Spoofer",
     "icons": [
         {
             "src": "/android-chrome-192x192.png",
@@ -13,7 +13,7 @@
             "type": "image/png"
         }
     ],
-    "theme_color": "#556ab2",
-    "background_color": "#556ab2",
+    "theme_color": "#556ab1",
+    "background_color": "#556ab1",
     "display": "standalone"
 }
