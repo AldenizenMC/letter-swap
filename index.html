@@ -6,9 +6,9 @@
     <meta name="darkreader-lock">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Letter Swap</title>
+    <title>Unicode Spoofer</title>
     <!-- Stylesheets -->
-    <link rel="stylesheet" href="css/styles.css?version=1">
+    <link rel="stylesheet" href="css/styles.css?version=5">
     <!-- Favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -18,15 +18,15 @@
     <meta name="msapplication-TileColor" content="#556ab2">
     <meta name="theme-color" content="#556ab2">
     <!-- JavaScripts -->
-    <script src="javascripts/theme.js?version=1" type="module"></script>
-    <script src="javascripts/index-script.js?version=1" type="module"></script>
+    <script src="javascripts/theme.js?version=5" type="module"></script>
+    <script src="javascripts/index-script.js?version=5" type="module"></script>
     <script src="https://kit.fontawesome.com/e524614bb5.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script>
     <!-- Embedding -->
-    <meta content="Letter Swap" property="og:title">
+    <meta content="Unicode Spoofer" property="og:title">
     <meta content="Swaps normal letters for visually similar alternatives" property="og:description">
-    <meta content="https://aldenizenmc.github.io/letter-swap">
-    <meta content="https://aldenizenmc.github.io/letter-swap/images/logo.webp" property="og:image">
+    <meta content="https://aldenizenmc.github.io/unicode-spoofer">
+    <meta content="https://aldenizenmc.github.io/unicode-spoofer/images/logo.webp" property="og:image">
     <meta content="#3254a8" data-react-helmet="true" name="theme-color">
 </head>
 
@@ -34,11 +34,11 @@
     <header>
         <div class="header">
             <div class="headings">
-                <h1>Letter Swap</h1>
-                <h3>Swaps normal letters for visually similar alternatives</h3>
+                <h1>Unicode Spoofer</h1>
+                <h3>Replaces regular letters with visually similar alternatives</h3>
                 <nav class="links">
                     <a href="index.html">Converter</a>
-                    <a href="letters.html">Letter List</a>
+                    <a href="characters.html">Character List</a>
                     <a href="about.html">About</a>
                 </nav>
                 <div class="light-toggle">
@@ -54,6 +54,27 @@
         <noscript>You need to enable JavaScript for the converter to work</noscript>
         <div class="main-input" id="input-container">
             <textarea name="text-input" id="text-input" class="input" placeholder="Hello World!"></textarea>
+            <div class="converter-setting-container">
+                <div>
+                    <input type="checkbox" name="" id="converter-setting-lowercase" data-target="converter-lowercase">
+                    <label for="converter-setting-lowercase">Lowercase Letters</label>
+                </div>
+
+                <div>
+                    <input type="checkbox" name="" id="converter-setting-uppercase" data-target="converter-uppercase">
+                    <label for="converter-setting-uppercase">Uppercase Letters</label>
+                </div>
+
+                <div>
+                    <input type="checkbox" name="" id="converter-setting-number" data-target="converter-number">
+                    <label for="converter-setting-number">Numbers</label>
+                </div>
+
+                <div>
+                    <input type="checkbox" name="" id="converter-setting-symbol" data-target="converter-symbol">
+                    <label for="converter-setting-symbol">Symbols</label>
+                </div>
+            </div>
             <button id="convert">Convert</button>
         </div>
         <div class="main-output" id="output-container">
@@ -62,10 +83,10 @@
             <table>
                 <thead>
                     <tr>
-                        <th><abbr title="N"></abbr>N</th>
-                        <th><abbr title="Original"></abbr>Original</th>
-                        <th><abbr title="Replaced"></abbr>Replaced</th>
-                        <th><abbr title="Block"></abbr>Block</th>
+                        <th>#</th>
+                        <th>Original</th>
+                        <th>Replaced</th>
+                        <th>Block</th>
                     </tr>
                 </thead>
                 <tbody id="replaced-letter-table">
@@ -75,7 +96,8 @@
             <a class="button" id="inspect">Inspect</a>
             <div class="input-copy">
                 <input class="input-copy" type="text" id="text-url" readonly>
-                <button class="button-copy" id="url-copy" data-clipboard-target="#text-url">Copy</button>
+                <button class="button-copy" id="url-copy" data-clipboard-target="#text-url" data-clicked="Copied"
+                    data-unclicked="Copy"></button>
             </div>
         </div>
     </main>

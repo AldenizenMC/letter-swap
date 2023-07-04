@@ -1,6 +1,13 @@
 import { Letters as letters } from "./letters.js";
 
-const Letters = letters.filter((l) => l.modified.length !== 0);
+// const Letters = letters.filter((l) => l.modified.length !== 0);
+
+const Letters = Object.fromEntries(
+    Object.entries(letters).map(([prop, arr]) => [
+        prop,
+        arr.filter((l) => l.modified.length !== 0),
+    ])
+);
 
 const inputContainer = document.getElementById("input-container");
 const inputTextarea = document.getElementById("text-input");
@@ -13,20 +20,35 @@ const inspectButton = document.getElementById("inspect");
 const urlInputText = document.getElementById("text-url");
 const urlCopyButton = document.getElementById("url-copy");
 
+const toggleLowercase = document.getElementById("converter-setting-lowercase");
+const toggleUppercase = document.getElementById("converter-setting-uppercase");
+const toggleNumber = document.getElementById("converter-setting-number");
+const toggleSymbol = document.getElementById("converter-setting-symbol");
+
+// Remember converter state
+[toggleLowercase, toggleUppercase, toggleNumber, toggleSymbol].forEach(($el) =>
+    loadToggleState($el)
+);
+
 const params = new URLSearchParams(window.location.search);
 let inputParam = params.get("input");
 
 if (inputParam) convert(inputParam);
 
 document.addEventListener("DOMContentLoaded", () => {
+    urlCopyButton.innerText = urlCopyButton.dataset["unclicked"];
     convertButton.addEventListener("click", () => convert());
     var clipboard = new ClipboardJS("#url-copy");
 
+    // Remember converter state
+    [toggleLowercase, toggleUppercase, toggleNumber, toggleSymbol].forEach(
+        ($el) => $el.addEventListener("change", (e) => setToggleState(e))
+    );
+
     clipboard.on("success", (e) => {
-        let name = urlCopyButton.innerText;
-        urlCopyButton.innerText = "Copied";
+        urlCopyButton.innerText = urlCopyButton.dataset["clicked"];
         setTimeout(() => {
-            urlCopyButton.innerText = name;
+            urlCopyButton.innerText = urlCopyButton.dataset["unclicked"];
         }, 1500);
         e.clearSelection();
     });
@@ -39,6 +61,16 @@ document.addEventListener("DOMContentLoaded", () => {
         console.error("Trigger:", e.trigger);
     });
 });
+
+function loadToggleState($el) {
+    let state = false;
+    if (localStorage.getItem($el.dataset["target"]) == "true") state = true;
+    $el.checked = state;
+}
+
+function setToggleState(e) {
+    localStorage.setItem(e.target.dataset["target"], e.target.checked);
+}
 
 /**
  * ### Copies content of input element to clipboard
@@ -71,8 +103,27 @@ function convert(inputValue = undefined) {
 
     replacedTable.innerHTML = "";
 
+    // List of letter that will replace original
+    let replaceLetters = [];
+
+    // If uppercase checkbox is checked, append item in Letters.uppercase to replaceLetters
+    if (toggleUppercase.checked)
+        replaceLetters = replaceLetters.concat(Letters.uppercase);
+
+    // same thing as uppercase
+    if (toggleLowercase.checked)
+        replaceLetters = replaceLetters.concat(Letters.lowercase);
+
+    // same thing as uppercase
+    if (toggleNumber.checked)
+        replaceLetters = replaceLetters.concat(Letters.number);
+
+    // same thing as uppercase
+    if (toggleSymbol.checked)
+        replaceLetters = replaceLetters.concat(Letters.symbol);
+
     let i = 0;
-    for (const letter of Letters) {
+    for (const letter of replaceLetters) {
         if (value.includes(letter.original)) {
             i++;
             value = value.replace(letter.original, letter.modified);
@@ -96,8 +147,6 @@ function convert(inputValue = undefined) {
     if (!outputContainer.classList.contains("is-active")) {
         outputContainer.classList.add("is-active");
     }
-
-    console.log(i);
 
     if (i === 0) {
         showOutputNotification("No letter were replaced");

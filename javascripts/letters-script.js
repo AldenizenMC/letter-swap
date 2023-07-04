@@ -1,11 +1,12 @@
 import { Letters } from "./letters.js";
 
-const table = document.getElementById("letter-list-table");
-
-let i = 0;
-for (const letter of Letters) {
-    i++;
-    addValueToTable(table, i, letter);
+for (const prop in Letters) {
+    let i = 0;
+    let tbody = createTable(document.querySelector("main"), prop, prop);
+    for (const letter of Letters[prop]) {
+        i++;
+        addValueToTable(tbody, i, letter);
+    }
 }
 
 /**
@@ -32,4 +33,56 @@ function addValueToTable($el, number, value) {
     wrapper.appendChild(blocked);
 
     $el.appendChild(wrapper);
+}
+
+/**
+ * Creates a new table and appends it to $el
+ * @param {HTMLElement} $el
+ * @param {string} title
+ * @param {string} body_id
+ */
+function createTable($el, title, body_id) {
+    const wrapper = document.createElement("div");
+    const title_ = document.createElement("h3");
+    const table = document.createElement("table");
+
+    const thead = document.createElement("thead");
+
+    const tr = document.createElement("tr");
+
+    const index = document.createElement("th");
+    const original = document.createElement("th");
+    const replacement = document.createElement("th");
+    const block = document.createElement("th");
+
+    const tbody = document.createElement("tbody");
+
+    const tfoot = document.createElement("tfoot");
+
+    index.appendChild(document.createTextNode("#"));
+    original.appendChild(document.createTextNode("Original"));
+    replacement.appendChild(document.createTextNode("Replacement"));
+    block.appendChild(document.createTextNode("Block"));
+
+    tr.appendChild(index);
+    tr.appendChild(original);
+    tr.appendChild(replacement);
+    tr.appendChild(block);
+
+    thead.appendChild(tr);
+    tbody.id = body_id;
+
+    table.appendChild(thead);
+    table.appendChild(tbody);
+    table.appendChild(tfoot);
+
+    title_.appendChild(document.createTextNode(title));
+    title_.classList.add("letter-table-title");
+
+    wrapper.appendChild(title_);
+    wrapper.appendChild(table);
+
+    $el.appendChild(wrapper);
+
+    return tbody;
 }
