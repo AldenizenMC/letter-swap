@@ -1,5 +1,11 @@
 # Changelog
 
+# 2023-07-05
+
+### Fixed
+- Fixed mobile UI
+
+
 ## 2023-07-04
 
 ### Added
