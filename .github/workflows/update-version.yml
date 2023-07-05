@@ -1,12 +1,12 @@
-# Created using ChatGPT
-# Taken from https://github.com/AldenizenMC/AldenizenMC.github.io/blob/main/.github/workflows/update-version.yml
 name: increment version query parameter
 
 on:
     push:
-        paths:
-            - "**/*.css"
-            - "**/*.js"
+        branches:
+            - main
+    pull_request:
+        types:
+            - synchronize
 
 jobs:
     increment_version:
@@ -15,7 +15,13 @@ jobs:
             - name: Checkout code
               uses: actions/checkout@v2
 
+            - name: Determine file changes
+              id: file_changes
+              run: |
+                  echo "::set-output name=has_changes::$(git diff-tree --no-commit-id --name-only -r ${{ github.event.pull_request.head.sha }})"
+
             - name: Run Python script
+              if: steps.file_changes.outputs.has_changes == 'true' && contains(github.event.pull_request.changed_files, '*.css') || contains(github.event.pull_request.changed_files, '*.js')
               run: |
                   python scripts/update_version.py
 
