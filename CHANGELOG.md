@@ -1,6 +1,6 @@
 # Changelog
 
-# 2023-07-05
+## 2023-07-05
 
 ### Fixed
 - Fixed mobile UI
