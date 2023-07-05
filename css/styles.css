@@ -167,9 +167,9 @@ input:focus + .slider {
 }
 
 input:checked + .slider::before {
-    -webkit-transform:  translateX(100%);
-    -ms-transform:      translateX(100%);
-    transform:          translateX(100%);
+    -webkit-transform:  translateX(26px);
+    -ms-transform:      translateX(26px);
+    transform:          translateX(26px);
 }
 
 /* Rounded sliders */
@@ -180,6 +180,38 @@ input:checked + .slider::before {
 .slider.round:before {
     border-radius: 50%;
 } 
+
+@media screen and (max-width: 645px) {
+    div.light-toggle {
+        top: 28px    
+    }
+
+
+    .switch {
+        width: 43px;
+        height: 30px;
+        margin-left: 2px
+    }
+
+    
+    .slider::before {
+        position: absolute;
+        content: "";
+        height: 22px;
+        width: 22px;
+        left: 4px;
+        bottom: 4px;
+        background-color: var(--foreground-color);
+        -webkit-transition: .4s;
+        transition: .4s;
+    }
+
+    input:checked + .slider::before {
+        -webkit-transform:  translateX(14px);
+        -ms-transform:      translateX(14px);
+        transform:          translateX(14px);
+    }
+}
 
 textarea.input {
     --default-line: 5;
@@ -427,7 +459,9 @@ div.toast.show {
 
 .converter-setting-container {
     margin-bottom: 1rem;
-    display: inline-flex;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
 }
 
 .converter-setting-container div {
@@ -436,6 +470,17 @@ div.toast.show {
     margin: 0 0.35em;
 }
 
+
+@media screen and (max-width: 635px) {
+    .converter-setting-container {
+        flex-direction: column;
+    }
+
+    .converter-setting-container div {
+        margin-top:     0.15em;
+        margin-bottom:  0.15em;
+    }
+}
 
 .converter-setting-container input[type="checkbox"]  {
     position: relative;
@@ -475,10 +520,8 @@ div.toast.show {
 .converter-setting-container input[type="checkbox"]:checked::after {
     position: absolute;
     content: "";
-    left: 20%;
-    top: 27%;
-    height: 1em;
-    width:  1em;
+    left: 2.5px;
+    top: 5px;
     width: 5px;
     height: 10px;
     border-color: var(--p-color);
