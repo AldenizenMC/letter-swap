@@ -1,6 +1,8 @@
 name: increment version query parameter
 
 on:
+    workflow_dispatch:
+
     push:
         branches:
             - main
